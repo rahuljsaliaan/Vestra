@@ -2,6 +2,10 @@
 
 This section is the heart of the docs. If you can explain the design patterns in Vestra, you can explain the codebase — because the patterns *are* the recurring ideas that everything else is built from.
 
+:::note You're now past the essentials — this is the deeper dive
+If you've read [The big picture](#/big-picture), [How the app is organised](#/architecture) and [What happens when you click](#/lifecycle), you already understand Vestra well enough to describe it. Everything from here on is the *deeper dive*. Treat these pattern chapters as **reference** — read one when you're curious, not all in one sitting. Each is short and stands on its own.
+:::
+
 ## What is a design pattern?
 
 A **design pattern** is a *named, reusable solution to a problem that comes up again and again* in software. Nobody invents them from scratch; they are discovered, then given names so programmers can talk about them quickly.

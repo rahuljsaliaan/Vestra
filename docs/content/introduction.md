@@ -1,98 +1,69 @@
-# Vestra, explained for humans
+# Start here
 
-Welcome. This is a **guided tour of the Vestra codebase**, written for someone who is about to explain the project to other people — a teammate, a mentor, an interviewer, a class — and who is *not* yet an expert. Every concept is introduced from zero, with a real-world analogy and, most importantly, an answer to the question **"why is the code written this way?"**
+Welcome! These docs teach you the **Vestra** codebase from zero — so that you can *understand* it and *explain* it to someone else. No prior experience with frameworks is needed. We go slowly, we use lots of pictures, and we always explain **why** things are the way they are before showing any code.
 
-:::note What is Vestra?
-**Vestra** is a *fashion-aggregator storefront*. You browse clothing from one beautiful website, and when you want to buy, Vestra sends you to whichever store (Amazon, Flipkart, Myntra, Ajio, Tata CLiQ) has the best price. Think of it as a **price-comparison mall** for clothes: one entrance, many shops inside.
+:::tip Read this page first, then follow the arrows
+Every page has a **Next →** button at the bottom. If you just follow it from here, you'll travel the docs in the intended order — easy things first, harder things later. You are not expected to read all 23 pages before you understand the project; see the short path below.
 :::
 
-The remarkable thing about Vestra, from a learning point of view, is that it is built with **plain HTML, CSS and JavaScript** — no React, no Vue, no build tools, nothing to install. Yet it is organised with the same discipline you would find in a large professional application. That makes it a near-perfect specimen for learning **how good software is structured**, without any framework magic hiding the moving parts.
+## What is Vestra?
+
+Vestra is a **fashion price-comparison store**. You browse clothes on one nice website. When you decide to buy, Vestra sends you to whichever real shop — Amazon, Flipkart, Myntra, Ajio or Tata CLiQ — has the best price. It doesn't sell anything itself; it's a helpful middle-man.
+
+<figure class="diagram">
+  <div class="d-hub">
+    <div class="d-hub__node">🧑 &nbsp;A shopper</div>
+    <div class="d-arrow">↓</div>
+    <div class="d-hub__node d-hub__node--center">Vestra<span>one website to browse</span></div>
+    <div class="d-hub__label">links out to the cheapest real store ↓</div>
+    <div class="d-hub__fan">
+      <span class="d-chip">Amazon</span>
+      <span class="d-chip">Flipkart</span>
+      <span class="d-chip">Myntra</span>
+      <span class="d-chip">Ajio</span>
+      <span class="d-chip">Tata CLiQ</span>
+    </div>
+  </div>
+  <figcaption>One place to browse; the actual buying happens on whichever store is cheapest.</figcaption>
+</figure>
+
+Think of it as a **shopping mall directory**: the mall itself doesn't sell shoes, but it shows you every shoe shop and points you to the best deal.
+
+## Why is this codebase worth learning from?
+
+Vestra is built with **plain HTML, CSS and JavaScript** — no React, no build tools, nothing to install. But it is organised with the same care as a big professional app. That combination is rare and valuable: you can see *how good software is structured*, with nothing hidden behind framework magic.
+
+So learning Vestra teaches you two things at once:
+- how *this* app works, and
+- the general ideas — architecture, design patterns, object-oriented thinking — that appear in almost every serious software project.
 
 ## Who these docs are for
 
-You do not need to know React, TypeScript, or any framework. You *should* be comfortable reading basic JavaScript (variables, functions, `if`/`for`). Everything beyond that — modules, classes, promises, design patterns, object-oriented programming — is explained here as we meet it in the code.
+You should be comfortable reading very basic JavaScript (a variable, a function, an `if`). That's it. Words like *module*, *class*, *promise*, *design pattern* are all explained the moment we meet them, and there's a [Glossary](#/glossary) for anything unfamiliar — press `/` at any time to search it.
 
-:::tip How to read this
-Read the sections **in order** the first time. Each one builds on the last: the architecture chapter gives you the map, the patterns chapters teach you the vocabulary, and the walkthroughs show you the vocabulary being used in real features. If you only have ten minutes, read the [guided tour](#/tour).
-:::
+## The short path (start with just these five)
 
-## What you will be able to explain
+If the sidebar looks long, don't worry. Read these **five pages** and you'll already be able to explain the whole project:
 
-By the end you will be able to stand in front of the code and confidently answer:
+1. **Start here** — this page.
+2. [Running the project](#/running) — see it on your screen.
+3. [The big picture](#/big-picture) — the whole app as a few simple diagrams. *(the most important page)*
+4. [How the app is organised](#/architecture) — the one idea that shapes everything.
+5. [What happens when you click](#/lifecycle) — the app in motion.
 
-- **"How is the project organised, and why?"** — the [layered architecture](#/architecture).
-- **"What happens, step by step, when I click a link?"** — the [page lifecycle](#/lifecycle).
-- **"What is a design pattern, and which ones are used here?"** — the [patterns chapters](#/patterns-intro).
-- **"What does object-oriented programming actually mean in this code?"** — the [OOP chapter](#/oop).
-- **"How does feature X work?"** — the [feature walkthroughs](#/feature-shopping).
+Everything after that — the **Design Patterns**, **OOP**, and **Feature** chapters — is the *deeper dive*. Read those later, one at a time, whenever you're curious. They are reference material, not a reading marathon.
 
 <div class="card-grid">
-<a class="nav-card" href="#/running"><b>▶ Run it first</b><span>Get Vestra on screen in two commands, then come back.</span></a>
-<a class="nav-card" href="#/architecture"><b>🏛 The big picture</b><span>The one diagram that explains the whole app.</span></a>
-<a class="nav-card" href="#/patterns-intro"><b>🧩 Design patterns</b><span>Reusable solutions, each with a real-world analogy.</span></a>
-<a class="nav-card" href="#/presenting"><b>🎤 Present it</b><span>A script for explaining Vestra out loud.</span></a>
+<a class="nav-card" href="#/running"><b>▶ First, run it</b><span>Two commands and it's on your screen. Do this before reading on.</span></a>
+<a class="nav-card" href="#/big-picture"><b>🗺 Then, the big picture</b><span>The overall architecture, drawn as pictures. No code yet.</span></a>
+<a class="nav-card" href="#/glossary"><b>📖 Stuck on a word?</b><span>Plain-English definitions of every term used here.</span></a>
+<a class="nav-card" href="#/presenting"><b>🎤 Need to present it?</b><span>A ready-made script for explaining Vestra out loud.</span></a>
 </div>
 
-## The shape of the code
+## How to get the most from this
 
-Here is the entire project in one glance. Do not worry about the details yet — just notice that everything has a place.
-
-```text
-index.html            the single web page everything loads into
-css/                  design tokens, layout, components, pages, motion
-js/
-  config/             constants & settings — the "rule book"
-  utils/              tiny reusable helpers (formatting, escaping, hashing)
-  services/           talking to the network, caching, business logic
-  state/              remembering things (wishlist, theme, quiz answers)
-  router/             deciding which page to show for a given URL
-  components/         reusable pieces of UI (a product card, a rail)
-  pages/              one file per screen (home, shop, product…)
-  motion/             scroll animations and flourishes
-  app.js              the "on" switch that starts everything
-```
-
-The golden rule that holds it all together is a **one-way flow of dependencies**:
-
-```text
-config → utils → services → state → components → pages → app
-```
-
-A file may only use things to its *left*. A utility may use config; a page may use everything before it; but config may never reach forward into pages. We will unpack exactly why this matters in [The layered architecture](#/architecture).
-
-:::analogy A kitchen brigade
-A professional kitchen has stations: prep, sauté, plating, pass. Ingredients flow one way — from prep toward the plate — never backward. You would never send a finished dish back to the vegetable-peeling station. Vestra's layers are those stations. Data flows one way, so no matter how big the "restaurant" gets, everyone knows where they stand and nothing loops back on itself.
+:::note Keep three windows open
+The docs read best alongside the real thing. Open **(1)** these docs, **(2)** the running app, and **(3)** the project files in your editor. When a page mentions a file, glance at it. Reading the explanation, the picture, and the real code together is by far the fastest way to *get it*.
 :::
 
-## A taste of the code
-
-Vestra never scatters "magic values" through the code. Every meaningful number or string is named once, in the config layer. Here is a real slice of `js/config/constants.js`:
-
-```js
-/** Time-related tuning, all in milliseconds. */
-export const TIMINGS = Object.freeze({
-  SEARCH_DEBOUNCE_MS: 300, // wait this long after typing before searching
-  SKELETON_MIN_MS: 350,    // show the loading placeholder at least this long
-  TOAST_MS: 3200,          // how long a little notification stays on screen
-});
-```
-
-Notice three things a beginner can already appreciate:
-
-1. `Object.freeze(...)` makes the object **read-only** — nobody can accidentally change a timing at runtime.
-2. Each value has a **name and a comment**, so `TIMINGS.SEARCH_DEBOUNCE_MS` reads like a sentence.
-3. It is **exported**, so every other file shares the *same* number. Change it once, it changes everywhere.
-
-> This single habit — "no magic strings, everything named in config" — is one of the biggest reasons the codebase feels calm and easy to change.
-
-## Where things live at a glance
-
-| If you want to understand… | Read the chapter | It lives in |
-| --- | --- | --- |
-| How screens are chosen from the URL | [The life of a page](#/lifecycle) | `js/router/` |
-| How data is fetched and cached | [Facade](#/pattern-facade), [Caching](#/pattern-decorator-cache) | `js/services/` |
-| How the wishlist remembers items | [The Observer store](#/pattern-observer) | `js/state/` |
-| How prices compare across stores | [Adapters & registries](#/pattern-adapter) | `js/services/offers-service.js` |
-| How the UI is drawn | [Modules & factories](#/pattern-module-factory) | `js/components/`, `js/pages/` |
-
-Ready? The very first thing to do is **see it running**, so the words on these pages have pictures to attach to. Head to [Running the project](#/running).
+Ready? Let's put Vestra on your screen first — head to **[Running the project](#/running)**.

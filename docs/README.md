@@ -60,6 +60,7 @@ Standard Markdown plus a few extras the renderer understands:
   :::
   ```
   Types: `note`, `tip`, `warning`, `danger`, `analogy`, `why`.
+- **Visual diagrams** — authored as plain, theme-aware HTML in a `<figure class="diagram">…</figure>` block (keep it on contiguous lines, no blank line inside). Helper classes: `d-hub` (aggregator), `d-window`/`d-region` (the SPA "stage"), `d-stack`/`d-layer` (the layer stack), `d-flow` (numbered steps). Styles live in `assets/styles.css`.
 
 ## Keyboard
 

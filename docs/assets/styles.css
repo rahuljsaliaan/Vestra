@@ -337,6 +337,86 @@ a:hover { text-decoration: underline; }
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
+/* =======================================================================
+   Diagrams — plain HTML/CSS "pictures" so beginners can visualise the app.
+   All theme-aware via tokens; responsive by default.
+   ======================================================================= */
+.diagram {
+  margin: 1.8em 0; padding: 22px 20px 14px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+.diagram figcaption {
+  margin-top: 14px; text-align: center; font-size: 0.86rem;
+  color: var(--text-soft); line-height: 1.5;
+}
+
+/* Arrow used between diagram parts */
+.d-arrow { text-align: center; color: var(--text-faint); font-size: 1.2rem; line-height: 1; margin: 6px 0; }
+
+/* Aggregator hub: You → Vestra → stores */
+.d-hub { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.d-hub__node {
+  padding: 10px 20px; border-radius: 12px; font-weight: 700; text-align: center;
+  border: 1px solid var(--line-strong); background: var(--bg);
+}
+.d-hub__node--center {
+  background: var(--brand-grad); color: #fff; border: 0; font-size: 1.15rem;
+  padding: 14px 30px; box-shadow: var(--shadow);
+}
+.d-hub__node--center span { display: block; font-weight: 500; font-size: 0.78rem; opacity: 0.9; }
+.d-hub__label { font-size: 0.78rem; color: var(--text-faint); margin-top: 6px; }
+.d-hub__fan { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 6px; }
+.d-chip {
+  padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 0.85rem;
+  background: var(--bg); border: 1px solid var(--line-strong); color: var(--text-soft);
+}
+
+/* Browser window / SPA "stage" */
+.d-window { border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--bg); }
+.d-window__bar { display: flex; gap: 6px; padding: 9px 12px; background: var(--bg-sunk); border-bottom: 1px solid var(--line); }
+.d-window__bar span { width: 11px; height: 11px; border-radius: 50%; background: var(--line-strong); }
+.d-region { padding: 14px 16px; text-align: center; font-size: 0.88rem; }
+.d-region--fixed { color: var(--text-faint); background: var(--bg-soft); }
+.d-region--swap {
+  color: var(--text); font-weight: 700; background: var(--accent-soft);
+  border-top: 1px dashed var(--accent); border-bottom: 1px dashed var(--accent);
+  min-height: 92px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px;
+}
+.d-region--swap small { font-weight: 500; color: var(--text-soft); }
+
+/* Layered-architecture stack (config at the bottom = foundation) */
+.d-stack { display: flex; flex-direction: column; gap: 7px; }
+.d-layer {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 11px 16px; border-radius: 8px;
+  background: var(--bg); border: 1px solid var(--line);
+  border-left: 4px solid color-mix(in srgb, var(--accent) calc(30% + var(--i) * 10%), var(--line-strong));
+}
+.d-layer b { font-family: var(--font-mono); font-size: 0.95rem; min-width: 108px; color: var(--text); }
+.d-layer span { color: var(--text-soft); font-size: 0.88rem; }
+.d-layer--base { background: var(--accent-soft); border-left-color: var(--accent); }
+.d-stack-note { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.82rem; color: var(--text-faint); justify-content: center; }
+
+/* Numbered flow of steps */
+.d-flow { list-style: none; margin: 0; padding: 0; position: relative; }
+.d-flow li {
+  position: relative; padding: 6px 0 18px 46px; margin: 0;
+  border-left: 2px solid var(--line); margin-left: 15px;
+}
+.d-flow li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.d-flow li b {
+  position: absolute; left: -15px; top: 2px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-size: 0.85rem;
+  display: grid; place-items: center; font-family: var(--font-mono);
+}
+.doc .d-flow li { color: var(--text); }
+
+@media (max-width: 520px) {
+  .d-layer b { min-width: 0; }
+}
+
 /* ----------------------------------------------------- Doc footer (prev/next) */
 .doc-footer {
   max-width: var(--content-max); margin: 48px auto 0;

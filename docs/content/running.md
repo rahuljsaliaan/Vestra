@@ -60,4 +60,4 @@ The product data is fetched live from the free public [DummyJSON](https://dummyj
 The **outbound "Buy on…" links are real** — they open a genuine search for that product on Amazon, Flipkart, and so on. The **per-store prices are simulated**, because the real retailer APIs need secret keys and server-side signing that a browser-only app cannot do safely. Vestra makes the prices look believable and keeps them stable using a hashing trick you will meet in [Adapters & Registries](#/pattern-adapter) and [Decorators & Caching](#/pattern-decorator-cache).
 :::
 
-Now that it is on screen, let's build a mental model of the whole thing in ten minutes: the [guided tour](#/tour).
+Now that it is on screen, let's build a mental picture of the whole thing — no code, just diagrams: **[The big picture](#/big-picture)**.

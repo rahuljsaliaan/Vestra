@@ -1,6 +1,20 @@
-# The life of a page
+# What happens when you click
 
-A Single-Page App has no page reloads, so *something* has to play the role the browser normally plays: deciding what to show, cleaning up the old screen, and drawing the new one. In Vestra that something is the **router** (`js/router/router.js`), and the contract it enforces is called the **page lifecycle**. Understanding this lifecycle is understanding how the whole app moves.
+In [The big picture](#/big-picture) we saw the six-step journey a click takes. Here it is again as a reminder — this page zooms into it:
+
+<figure class="diagram">
+  <ol class="d-flow">
+    <li><b>1</b> You click something.</li>
+    <li><b>2</b> The web address changes (no reload).</li>
+    <li><b>3</b> The <strong>router</strong> works out which screen to show.</li>
+    <li><b>4</b> The old screen is <strong>torn down</strong> (loads cancelled, listeners removed).</li>
+    <li><b>5</b> The new screen <strong>mounts</strong> and asks a service for data.</li>
+    <li><b>6</b> Data returns and the screen <strong>fills in</strong>.</li>
+  </ol>
+  <figcaption>The page lifecycle: the same journey, every single navigation.</figcaption>
+</figure>
+
+A Single-Page App has no page reloads, so *something* has to play the role the browser normally plays: deciding what to show, cleaning up the old screen, and drawing the new one. In Vestra that something is the **router** (`js/router/router.js`), and the contract it enforces is called the **page lifecycle**. This is where a little code starts to appear — but you've already got the shape of it from the picture above.
 
 ## What a "page" actually is
 

@@ -1,12 +1,14 @@
-# The layered architecture
+# How the app is organised
 
-If you remember one thing about Vestra, remember this diagram:
+In [The big picture](#/big-picture) you saw the layers drawn as floors of a building. This page goes one level deeper: the **one rule** that governs those layers, and — the part that really matters — **why** that rule pays off. Still very little code; mostly ideas.
+
+If you remember one line about Vestra, remember this:
 
 ```text
 config  →  utils  →  services  →  state  →  components  →  pages  →  app
 ```
 
-This is the backbone of the whole codebase. It is a **layered architecture** with a strict, one-directional rule. This chapter explains what each layer is, the single rule that governs them, and — the part interviewers love — *why* the rule pays off.
+That is the **layered architecture**, written as a one-way street. This chapter unpacks the single rule behind it and what it buys you.
 
 ## The rule: dependencies point one way
 
@@ -95,4 +97,4 @@ Every import points *left* on the diagram — config, utils, services, component
 Ask of any file: *"What is the highest layer it imports from?"* That tells you its own layer. And if the answer is "a layer above me", the design has been violated. In Vestra, it never is.
 :::
 
-Next: watch the layers cooperate in real time — [The life of a page](#/lifecycle).
+Next: watch the layers cooperate in real time — [What happens when you click](#/lifecycle).
