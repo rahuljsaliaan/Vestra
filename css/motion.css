@@ -1,0 +1,153 @@
+/*
+ * motion.css — All keyframes, scroll-reveal / stagger classes, marquee, and the
+ * global prefers-reduced-motion override. JS adds `.is-revealed` when an element
+ * enters the viewport (see motion/reveal.js); `--reveal-index` staggers grids.
+ */
+
+/* --- Scroll reveal --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal='fade'] {
+  transform: none;
+}
+[data-reveal='left'] {
+  transform: translateX(-32px);
+}
+[data-reveal='right'] {
+  transform: translateX(32px);
+}
+[data-reveal='scale'] {
+  transform: scale(0.94);
+}
+
+/* --- Keyframes --- */
+@keyframes shimmer {
+  0% {
+    background-position: -180% 0;
+  }
+  100% {
+    background-position: 180% 0;
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes heart-burst {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Badge pop on wishlist change. */
+.header__badge.is-popping {
+  animation: pop var(--dur-base) var(--ease-spring);
+}
+
+/* Kinetic hero: word-by-word rise-in. */
+.kinetic-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.kinetic-word__inner {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  transition-delay: calc(var(--kinetic-index, 0) * 55ms);
+}
+[data-kinetic].is-revealed .kinetic-word__inner {
+  transform: translateY(0);
+}
+
+/* --- Marquee strip --- */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: inline-flex;
+  gap: var(--space-xl);
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* --- View Transition (page swap) --- */
+::view-transition-old(root) {
+  animation: none;
+}
+::view-transition-new(root) {
+  animation: rise-in var(--dur-base) var(--ease-out);
+}
+
+/* --- Reduced motion: strip everything --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .marquee__track {
+    animation: none !important;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}

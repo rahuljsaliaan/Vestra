@@ -1,0 +1,117 @@
+/*
+ * tokens.css — Design tokens for the "Ink & Saffron Atelier" theme.
+ * All colour, type, spacing, radius, shadow and motion values live here as
+ * custom properties. Light (ivory paper) is the default; [data-theme="dark"]
+ * (Midnight Ink) overrides the colour set only. Nothing else in the codebase
+ * should hard-code a colour or a raw pixel scale value.
+ */
+
+:root {
+  /* --- Brand palette (theme-independent hues) --- */
+  --saffron: #e07b2e;
+  --saffron-bright: #f2953f;
+  --saffron-deep: #b85e18;
+  --ink-true: #17130f;
+
+  /* --- Light theme: warm ivory paper + deep ink --- */
+  --paper: #f4ede0;
+  --paper-raised: #fbf6ec;
+  --paper-sunk: #ece2d1;
+  --ink: #1d1813;
+  --ink-soft: #4a4139;
+  --ink-faint: #857a6c;
+  --line: #d8ccb8;
+  --line-strong: #c3b49c;
+  --accent: var(--saffron);
+  --accent-hover: var(--saffron-deep);
+  --accent-contrast: #fff8ef;
+  --on-accent: #fdf6ec;
+  --surface-glass: rgba(251, 246, 236, 0.72);
+  --success: #3f7d55;
+  --danger: #b23b32;
+  --shadow-color: 29 24 19;
+  --grain-opacity: 0.045;
+
+  /* --- Typography --- */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.86rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.45rem, 1.25rem + 1vw, 2rem);
+  --step-3: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --step-4: clamp(2.6rem, 1.8rem + 4vw, 4.75rem);
+  --step-5: clamp(3.2rem, 2rem + 6.5vw, 7rem);
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
+  --leading-body: 1.62;
+  --tracking-wide: 0.22em;
+  --tracking-caps: 0.14em;
+
+  /* --- Spacing scale (8px base, fluid where useful) --- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --space-3xl: clamp(4rem, 2.5rem + 8vw, 9rem);
+
+  /* --- Radii --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* --- Elevation --- */
+  --shadow-sm: 0 1px 2px rgba(var(--shadow-color) / 0.08);
+  --shadow-md: 0 12px 30px -12px rgba(var(--shadow-color) / 0.28);
+  --shadow-lg: 0 30px 60px -20px rgba(var(--shadow-color) / 0.35);
+
+  /* --- Layout --- */
+  --container: 1240px;
+  --container-narrow: 780px;
+  --header-h: 68px;
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+
+  /* --- Z layers --- */
+  --z-header: 100;
+  --z-menu: 90;
+  --z-toast: 200;
+  --z-overlay: 150;
+
+  /* Paper-grain texture as an inline SVG data-URI (fractal noise). */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Dark theme: Midnight Ink --- */
+:root[data-theme='dark'] {
+  --paper: #14110d;
+  --paper-raised: #1e1a15;
+  --paper-sunk: #100d0a;
+  --ink: #f3ebdd;
+  --ink-soft: #c9bda9;
+  --ink-faint: #8c7f6d;
+  --line: #322b22;
+  --line-strong: #453c30;
+  --accent: var(--saffron-bright);
+  --accent-hover: var(--saffron-bright);
+  --accent-contrast: #1a140c;
+  --on-accent: #17130d;
+  --surface-glass: rgba(30, 26, 21, 0.72);
+  --success: #6bbd87;
+  --danger: #e0776c;
+  --shadow-color: 0 0 0;
+  --grain-opacity: 0.06;
+}

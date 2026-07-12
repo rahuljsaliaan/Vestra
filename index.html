@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vestra — one closet, every store. Discover clothing across Amazon, Flipkart, Myntra, Ajio and Tata CLiQ, and check out at the best price."
+    />
+    <meta name="theme-color" content="#e07b2e" />
+    <title>Vestra — One closet. Every store.</title>
+
+    <!--
+      Theme boot: apply the saved / OS-preferred theme BEFORE first paint so
+      there is no flash of the wrong colour scheme. Kept inline and tiny on
+      purpose; the value key mirrors STORAGE_KEYS.THEME / THEME.ATTRIBUTE.
+    -->
+    <script>
+      (function () {
+        try {
+          var KEY = 'vestra.theme.v1';
+          var saved = localStorage.getItem(KEY);
+          var theme =
+            saved === 'light' || saved === 'dark'
+              ? saved
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          /* storage blocked — default theme from the attribute stands */
+        }
+      })();
+    </script>
+
+    <!-- Fonts: Fraunces (display serif) + Manrope (sans). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles: order matters (tokens → base → layout → components → pages → motion). -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/motion.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#app-main">Skip to content</a>
+
+    <header id="app-header" class="app-header"></header>
+
+    <main id="app-main" class="app-main" tabindex="-1"></main>
+
+    <footer id="app-footer" class="app-footer"></footer>
+
+    <div id="toast-host" class="toast-host" aria-live="polite" aria-atomic="false"></div>
+
+    <noscript>
+      <p style="padding: 2rem; text-align: center">
+        Vestra needs JavaScript enabled to browse the collection.
+      </p>
+    </noscript>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
