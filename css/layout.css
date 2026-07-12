@@ -4,9 +4,14 @@
  * scaffolding used by every route.
  */
 
-/* --- Containers --- */
+/* --- Containers ---
+ * Page roots default to full width, but each page's own container rule (e.g.
+ * `.shop`, `.home`) must be able to override this. Use a class selector (not
+ * `#app-main`) so the specificity matches those page rules and source order
+ * wins — otherwise the ID here clobbers every page's gutter and content ends
+ * up flush against the viewport edge. */
 .container,
-#app-main > * {
+.app-main > * {
   width: 100%;
 }
 
