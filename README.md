@@ -26,6 +26,19 @@ Server, …). No install, no compile.
 
 ---
 
+## Documentation
+
+A full, beginner-friendly guided tour of this codebase lives in **[`docs/`](docs/)** —
+a self-contained docs site (same vanilla stack, no build) that explains the
+architecture, every design pattern, and the OOP concepts with real-world
+analogies and the reasoning behind each decision.
+
+Serve the project root as above and it's reachable at
+**http://localhost:8000/docs/**, or via the **“Docs ↗”** link in the site header.
+To run it on its own port instead: `cd docs && python3 -m http.server 8090`.
+
+---
+
 ## Data
 
 Live product data comes from the free public **[DummyJSON](https://dummyjson.com)**

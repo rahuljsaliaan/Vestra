@@ -115,3 +115,13 @@ export const TOAST_LEVEL = Object.freeze({
   SUCCESS: 'success',
   ERROR: 'error',
 });
+
+/**
+ * External destinations that live outside the hash router (opened as real
+ * links, not routed). Relative to index.html — served from the project root,
+ * so the docs site sits at `docs/`.
+ * @readonly
+ */
+export const LINKS = Object.freeze({
+  DOCS: 'docs/',
+});

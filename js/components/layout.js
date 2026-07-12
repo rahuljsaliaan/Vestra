@@ -7,7 +7,7 @@
  */
 
 import { html, toElement, escapeHtml, raw, Disposer } from '../utils/dom.js';
-import { EVENTS, STATE_CLASSES, THEME, TIMINGS, TOAST_LEVEL } from '../config/constants.js';
+import { EVENTS, STATE_CLASSES, THEME, TIMINGS, TOAST_LEVEL, LINKS } from '../config/constants.js';
 import { ROUTE_ID, routeTo, QUERY_KEYS } from '../config/routes.js';
 import { categoriesByGroup } from '../config/categories.js';
 import { userStore } from '../state/user-store.js';
@@ -88,6 +88,7 @@ export function mountLayout({ header, footer, toastHost }) {
           </div>
           <a href="${routeTo.edits()}" class="header__link" data-route="${ROUTE_ID.EDITS}">Edits</a>
           <a href="${routeTo.quiz()}" class="header__link" data-route="${ROUTE_ID.QUIZ}">Style Quiz</a>
+          <a href="${LINKS.DOCS}" class="header__link header__link--docs" target="_blank" rel="noopener" title="Read the codebase documentation">Docs ↗</a>
         </nav>
         <div class="header__actions">
           <a class="header__icon-btn" href="${routeTo.shop()}" aria-label="Search">${raw(icon('search'))}</a>

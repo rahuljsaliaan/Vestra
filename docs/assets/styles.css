@@ -42,7 +42,8 @@
   --topbar-h: 60px;
   --sidebar-w: 286px;
   --toc-w: 236px;
-  --content-max: 760px;
+  --content-max: 700px;
+  --gutter: clamp(24px, 4.5vw, 72px);
   --radius: 10px;
   --shadow: 0 12px 34px -18px rgba(40, 32, 22, 0.35);
 }
@@ -198,7 +199,7 @@ a:hover { text-decoration: underline; }
 .content {
   margin-left: var(--sidebar-w);
   margin-right: var(--toc-w);
-  padding: calc(var(--topbar-h) + 42px) clamp(24px, 5vw, 64px) 120px;
+  padding: calc(var(--topbar-h) + 42px) var(--gutter) 120px;
   min-height: 100vh;
   outline: none;
 }
