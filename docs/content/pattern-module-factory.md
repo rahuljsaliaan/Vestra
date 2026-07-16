@@ -1,6 +1,6 @@
 # Modules & Factories
 
-Two patterns appear in every single file of Vestra. Learn these first and the rest of the code stops looking like a wall of text.
+Two patterns appear in every single file of Outfit Buddy. Learn these first and the rest of the code stops looking like a wall of text.
 
 ## The Module pattern
 
@@ -12,7 +12,7 @@ A **module** is a self-contained file that keeps some things **private** and del
 A module is a shop. The **shop floor and cash register** (its `export`s) are what customers touch. The **stock room** (its un-exported functions and variables) is staff-only. Customers get a clean counter to interact with and never see the mess in the back. If you reorganise the stock room, no customer notices — that's *encapsulation*, and it's the whole point.
 :::
 
-### In Vestra
+### In Outfit Buddy
 
 Look at `js/config/api.js`. It exposes exactly three ways to build a URL, and hides the helper that does the fiddly bits:
 
@@ -49,7 +49,7 @@ A **factory** is a function whose job is to **build and return a new object** (o
 You could source an engine, weld a chassis, and wire the electrics yourself every time you needed a car — or you could go to a factory and say "one car, please." The factory knows the assembly steps; you just get a working car. And every car it produces is **its own independent object** — your car and mine don't share a fuel tank.
 :::
 
-### In Vestra: component factories
+### In Outfit Buddy: component factories
 
 Components are factory functions named `create…`. Give one some data, get back a ready DOM element:
 
@@ -75,7 +75,7 @@ pageItems.forEach((product, index) =>
 );
 ```
 
-### In Vestra: page factories
+### In Outfit Buddy: page factories
 
 Every page is a factory too. It returns the `{ mount, unmount }` object the [router](#/lifecycle) expects:
 
@@ -111,4 +111,4 @@ The page mounts `rail.el`, later calls `rail.setItems([...])` to swap the conten
 - A **module** is just "a file with `export`s." Point at the exports: *"this is the public API; everything else is private."*
 - A **factory** is "a `create…` function that returns a new thing." Point at the `return`: *"call this and you get a fresh, self-contained object."*
 
-Next: how Vestra remembers changing data and lets the UI react — [The Observer store](#/pattern-observer).
+Next: how Outfit Buddy remembers changing data and lets the UI react — [The Observer store](#/pattern-observer).

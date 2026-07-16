@@ -1,4 +1,4 @@
-# Explaining Vestra out loud
+# Explaining Outfit Buddy out loud
 
 This page is your **script**. If you have to present or defend this codebase — to a class, a mentor, an interviewer, a teammate — here is how to do it confidently, from a 30-second pitch to a full walkthrough, plus the tough questions you might get and how to answer them.
 
@@ -8,7 +8,7 @@ Go **top-down**: big picture first, then zoom in. Never start by opening a rando
 
 ## The 30-second elevator pitch
 
-> *"Vestra is a fashion price-comparison storefront. You browse clothes from one site and it links you out to whichever store — Amazon, Flipkart, Myntra — is cheapest. What's interesting technically is that it's built in **plain HTML, CSS and JavaScript with no framework and no build step**, yet it's organised like a professional app: a strict layered architecture, a hand-rolled router and state store, and a dozen classic design patterns you can see in the open. It's basically a working tutorial on how good front-end software is structured."*
+> *"Outfit Buddy is a fashion price-comparison storefront. You browse clothes from one site and it links you out to whichever store — Amazon, Flipkart, Myntra — is cheapest. What's interesting technically is that it's built in **plain HTML, CSS and JavaScript with no framework and no build step**, yet it's organised like a professional app: a strict layered architecture, a hand-rolled router and state store, and a dozen classic design patterns you can see in the open. It's basically a working tutorial on how good front-end software is structured."*
 
 ## The 5-minute walkthrough
 
@@ -65,6 +65,6 @@ Good honest answers: *a formal test suite; a real backend/proxy for live pricing
 
 ## A one-paragraph summary to memorise
 
-> *"Vestra is a no-framework, no-build fashion price-comparison SPA. It's organised as a strict one-way layered architecture — config, utils, services, state, components, pages, app — and leans on classic design patterns: a factory per component and page, an observer store for state, Pub/Sub via custom events, retailer adapters in a registry, a strategy registry for sorting, a service facade over a two-tier de-duplicating cache, and a Disposer that guarantees clean teardown. Data from outside is validated at every boundary, HTML is escaped by default, prices are deterministically simulated so they're stable, and every animation respects reduced-motion. It's small enough to read in an afternoon and disciplined enough to learn professional structure from."*
+> *"Outfit Buddy is a no-framework, no-build fashion price-comparison SPA. It's organised as a strict one-way layered architecture — config, utils, services, state, components, pages, app — and leans on classic design patterns: a factory per component and page, an observer store for state, Pub/Sub via custom events, retailer adapters in a registry, a strategy registry for sorting, a service facade over a two-tier de-duplicating cache, and a Disposer that guarantees clean teardown. Data from outside is validated at every boundary, HTML is escaped by default, prices are deterministically simulated so they're stable, and every animation respects reduced-motion. It's small enough to read in an afternoon and disciplined enough to learn professional structure from."*
 
 You're ready. Open the app, open the code, and talk through the five beats. Good luck.

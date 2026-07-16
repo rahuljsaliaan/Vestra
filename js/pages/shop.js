@@ -107,7 +107,7 @@ export function createShopPage() {
 
   /** Reflect current filters into the URL without triggering a navigation. */
   function syncUrl() {
-    window.__vestraRouter?.replaceQuery(routeTo.shop(toQuery(filters)));
+    window.__outfitBuddyRouter?.replaceQuery(routeTo.shop(toQuery(filters)));
   }
 
   /**
@@ -216,7 +216,7 @@ export function createShopPage() {
       filters = readFilters(ctx.query);
 
       const activeCategory = findCategory(filters.category);
-      const heading = activeCategory ? activeCategory.label : filters.search ? `Results for “${filters.search}”` : 'The Vestra edit';
+      const heading = activeCategory ? activeCategory.label : filters.search ? `Results for “${filters.search}”` : 'The Outfit Buddy edit';
 
       root.append(
         toElement(html`
@@ -333,7 +333,7 @@ function deriveHeading(filters) {
   const cat = findCategory(filters.category);
   if (cat) return cat.label;
   if (filters.search) return `Results for “${filters.search}”`;
-  return 'The Vestra edit';
+  return 'The Outfit Buddy edit';
 }
 
 /**

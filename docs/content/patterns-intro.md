@@ -1,9 +1,9 @@
 # Patterns in plain English
 
-This section is the heart of the docs. If you can explain the design patterns in Vestra, you can explain the codebase — because the patterns *are* the recurring ideas that everything else is built from.
+This section is the heart of the docs. If you can explain the design patterns in Outfit Buddy, you can explain the codebase — because the patterns *are* the recurring ideas that everything else is built from.
 
 :::note You're now past the essentials — this is the deeper dive
-If you've read [The big picture](#/big-picture), [How the app is organised](#/architecture) and [What happens when you click](#/lifecycle), you already understand Vestra well enough to describe it. Everything from here on is the *deeper dive*. Treat these pattern chapters as **reference** — read one when you're curious, not all in one sitting. Each is short and stands on its own.
+If you've read [The big picture](#/big-picture), [How the app is organised](#/architecture) and [What happens when you click](#/lifecycle), you already understand Outfit Buddy well enough to describe it. Everything from here on is the *deeper dive*. Treat these pattern chapters as **reference** — read one when you're curious, not all in one sitting. Each is short and stands on its own.
 :::
 
 ## What is a design pattern?
@@ -23,9 +23,9 @@ Two reasons, both practical:
 1. **They make you fluent.** Once you know the names, you can describe a 40-file project in a few sentences — which is exactly what you need to do when explaining it.
 2. **They reveal intent.** Recognising "ah, this is the Strategy pattern" tells you not just *what* the code does but *why* it is shaped that way, and what the author was trying to make easy.
 
-## The patterns you will meet in Vestra
+## The patterns you will meet in Outfit Buddy
 
-Vestra is unusually rich in clean, textbook examples. Here is the tour, each linked to its own chapter:
+Outfit Buddy is unusually rich in clean, textbook examples. Here is the tour, each linked to its own chapter:
 
 | Pattern | The problem it solves | Where it lives |
 | --- | --- | --- |
@@ -41,11 +41,11 @@ Vestra is unusually rich in clean, textbook examples. Here is the tour, each lin
 | [Guard / Validation](#/pattern-guards) | Never trust data from outside; check it at the door. | `utils/validate.js` |
 
 :::tip You don't need to memorise this table
-Read the chapters in order. Each one teaches its pattern with a real-world analogy first, then shows the exact Vestra code, then answers "why here?". By the end the table above will read like a list of old friends.
+Read the chapters in order. Each one teaches its pattern with a real-world analogy first, then shows the exact Outfit Buddy code, then answers "why here?". By the end the table above will read like a list of old friends.
 :::
 
 ## A word of reassurance
 
-Patterns can sound intimidating ("Abstract Factory", "Dependency Inversion") but the ideas are almost always simpler than the names. Vestra uses them in their *plainest* form — no clever indirection, no over-engineering. If a chapter ever feels heavy, drop down to the code snippet; the code is short, and it will ground the words.
+Patterns can sound intimidating ("Abstract Factory", "Dependency Inversion") but the ideas are almost always simpler than the names. Outfit Buddy uses them in their *plainest* form — no clever indirection, no over-engineering. If a chapter ever feels heavy, drop down to the code snippet; the code is short, and it will ground the words.
 
 Let's begin with the two that appear in literally every file: [Modules & Factories](#/pattern-module-factory).

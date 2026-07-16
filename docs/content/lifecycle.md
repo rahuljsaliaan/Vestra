@@ -14,7 +14,7 @@ In [The big picture](#/big-picture) we saw the six-step journey a click takes. H
   <figcaption>The page lifecycle: the same journey, every single navigation.</figcaption>
 </figure>
 
-A Single-Page App has no page reloads, so *something* has to play the role the browser normally plays: deciding what to show, cleaning up the old screen, and drawing the new one. In Vestra that something is the **router** (`js/router/router.js`), and the contract it enforces is called the **page lifecycle**. This is where a little code starts to appear — but you've already got the shape of it from the picture above.
+A Single-Page App has no page reloads, so *something* has to play the role the browser normally plays: deciding what to show, cleaning up the old screen, and drawing the new one. In Outfit Buddy that something is the **router** (`js/router/router.js`), and the contract it enforces is called the **page lifecycle**. This is where a little code starts to appear — but you've already got the shape of it from the picture above.
 
 ## What a "page" actually is
 
@@ -95,7 +95,7 @@ Two mechanisms do the cleaning:
 - **The `Disposer`** — every page keeps one. Each listener, subscription, and timer it creates is registered with the disposer, and `unmount()` calls `disposer.dispose()` to unwind them all. This is what prevents listener leaks. It gets its own chapter: [The Disposer](#/pattern-disposer).
 
 :::why Why cancel and clean up at all?
-Without it, navigating around a SPA slowly poisons itself: old pages' click handlers keep firing, old timers keep ticking, and a slow request from three screens ago can resolve and overwrite what you're now looking at. Vestra treats teardown as a first-class responsibility, which is why it stays responsive no matter how much you click around.
+Without it, navigating around a SPA slowly poisons itself: old pages' click handlers keep firing, old timers keep ticking, and a slow request from three screens ago can resolve and overwrite what you're now looking at. Outfit Buddy treats teardown as a first-class responsibility, which is why it stays responsive no matter how much you click around.
 :::
 
 ## Step 4 — the new page mounts

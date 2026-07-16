@@ -2,7 +2,7 @@
 
 In [The big picture](#/big-picture) you saw the layers drawn as floors of a building. This page goes one level deeper: the **one rule** that governs those layers, and — the part that really matters — **why** that rule pays off. Still very little code; mostly ideas.
 
-If you remember one line about Vestra, remember this:
+If you remember one line about Outfit Buddy, remember this:
 
 ```text
 config  →  utils  →  services  →  state  →  components  →  pages  →  app
@@ -94,7 +94,7 @@ import { createProductCard } from '../components/product-card.js';            //
 Every import points *left* on the diagram — config, utils, services, components. A page pulling from all the lower layers is exactly what you expect. If you ever saw a `services/` file importing from `pages/`, you would know instantly that something is wrong.
 
 :::tip The litmus test
-Ask of any file: *"What is the highest layer it imports from?"* That tells you its own layer. And if the answer is "a layer above me", the design has been violated. In Vestra, it never is.
+Ask of any file: *"What is the highest layer it imports from?"* That tells you its own layer. And if the answer is "a layer above me", the design has been violated. In Outfit Buddy, it never is.
 :::
 
 Next: watch the layers cooperate in real time — [What happens when you click](#/lifecycle).

@@ -1,10 +1,10 @@
 # Theming & motion
 
-The last walkthrough covers how Vestra *looks* and *moves* — the design-token system that powers light/dark themes, and the motion layer that adds polish while always respecting a user's preference for less animation.
+The last walkthrough covers how Outfit Buddy *looks* and *moves* — the design-token system that powers light/dark themes, and the motion layer that adds polish while always respecting a user's preference for less animation.
 
 ## Design tokens (`css/tokens.css`)
 
-A **design token** is a named design value — a colour, a spacing, a font size — defined once as a CSS custom property and reused everywhere. Vestra's theme, "Ink & Saffron Atelier", lives entirely in `tokens.css`.
+A **design token** is a named design value — a colour, a spacing, a font size — defined once as a CSS custom property and reused everywhere. Outfit Buddy's theme, "Ink & Saffron Atelier", lives entirely in `tokens.css`.
 
 ```css
 :root {
@@ -51,19 +51,19 @@ There's a subtle detail in `index.html`: a tiny inline script runs **before the 
 
 ```html
 <script>
-  var saved = localStorage.getItem('vestra.theme.v1');
+  var saved = localStorage.getItem('outfitbuddy.theme.v1');
   var theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', theme);
 </script>
 ```
 
 :::why Why inline this one script?
-If Vestra waited for `app.js` to load before choosing a theme, a dark-mode user would see a bright flash of the light theme for a split second first (a "FOUC" — flash of unstyled/wrong content). Running the theme decision inline, before first paint, eliminates that flash. It's a small, deliberate exception to "all logic in modules," and the comment in the file says exactly why.
+If Outfit Buddy waited for `app.js` to load before choosing a theme, a dark-mode user would see a bright flash of the light theme for a split second first (a "FOUC" — flash of unstyled/wrong content). Running the theme decision inline, before first paint, eliminates that flash. It's a small, deliberate exception to "all logic in modules," and the comment in the file says exactly why.
 :::
 
 ## Motion, respectfully (`js/motion/`)
 
-Vestra has lots of motion — scroll reveals, staggered grids, a kinetic hero, magnetic buttons, count-up numbers, parallax, marquee, momentum scrolling, page crossfades. **Every single one is disabled** when the user has asked their OS for reduced motion.
+Outfit Buddy has lots of motion — scroll reveals, staggered grids, a kinetic hero, magnetic buttons, count-up numbers, parallax, marquee, momentum scrolling, page crossfades. **Every single one is disabled** when the user has asked their OS for reduced motion.
 
 That check is one shared helper:
 
@@ -93,7 +93,7 @@ export function initEffects(root) {
 - **`effects.js`** — opt-in flourishes triggered by data attributes (`data-kinetic`, `data-magnetic`, `data-counter`). These attach their listeners to the element itself, so they're garbage-collected when a navigation removes the element — no manual cleanup needed.
 
 :::why Why treat reduced-motion as non-negotiable?
-Motion isn't just decoration — for some people it causes nausea, dizziness, or migraines (vestibular disorders). Honouring `prefers-reduced-motion` is an accessibility responsibility, not a nice-to-have. Vestra makes it structurally hard to forget: the check is one shared function, and effects are designed to *degrade gracefully* (a counter still shows its final number; the page still works) rather than simply vanish.
+Motion isn't just decoration — for some people it causes nausea, dizziness, or migraines (vestibular disorders). Honouring `prefers-reduced-motion` is an accessibility responsibility, not a nice-to-have. Outfit Buddy makes it structurally hard to forget: the check is one shared function, and effects are designed to *degrade gracefully* (a counter still shows its final number; the page still works) rather than simply vanish.
 :::
 
 ## The important accessibility touches
@@ -109,4 +109,4 @@ Beyond motion, small choices add up:
 
 > *"All design values are CSS custom-property tokens in one file, so components reference `var(--accent)`, never a hex code. Dark mode just redefines the colour tokens under a `data-theme` attribute the theme store toggles, and an inline script sets that attribute before first paint to avoid a flash. Every animation is gated by one shared `prefers-reduced-motion` check and degrades gracefully — motion is treated as an accessibility responsibility, not just polish."*
 
-That completes the walkthroughs. The reference section rounds things off: the [Glossary](#/glossary) and a script for [explaining Vestra out loud](#/presenting).
+That completes the walkthroughs. The reference section rounds things off: the [Glossary](#/glossary) and a script for [explaining Outfit Buddy out loud](#/presenting).

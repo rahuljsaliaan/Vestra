@@ -30,7 +30,7 @@ export const HTTP = Object.freeze({
 /** Response cache policy. @readonly */
 export const CACHE = Object.freeze({
   TTL_MS: 5 * 60 * 1000,
-  SESSION_PREFIX: 'vestra.cache.',
+  SESSION_PREFIX: 'outfitbuddy.cache.',
 });
 
 /**
@@ -74,17 +74,18 @@ export const OFFERS = Object.freeze({
  * @readonly
  */
 export const STORAGE_KEYS = Object.freeze({
-  WISHLIST: 'vestra.wishlist.v1',
-  QUIZ: 'vestra.quiz.v1',
-  THEME: 'vestra.theme.v1',
+  WISHLIST: 'outfitbuddy.wishlist.v1',
+  QUIZ: 'outfitbuddy.quiz.v1',
+  THEME: 'outfitbuddy.theme.v1',
+  STYLIST_PREFS: 'outfitbuddy.stylist.v1',
 });
 
 /** Namespaced custom DOM event names for fire-and-forget UI messaging. @readonly */
 export const EVENTS = Object.freeze({
-  TOAST: 'vestra:toast',
-  WISHLIST_CHANGED: 'vestra:wishlist-changed',
-  THEME_CHANGED: 'vestra:theme-changed',
-  NAVIGATE: 'vestra:navigate',
+  TOAST: 'outfitbuddy:toast',
+  WISHLIST_CHANGED: 'outfitbuddy:wishlist-changed',
+  THEME_CHANGED: 'outfitbuddy:theme-changed',
+  NAVIGATE: 'outfitbuddy:navigate',
 });
 
 /** CSS class names used to toggle state from JS. @readonly */

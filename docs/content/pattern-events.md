@@ -1,6 +1,6 @@
 # Events & Pub/Sub
 
-The [Observer store](#/pattern-observer) connects things that hold a reference to the store. But sometimes two parts of the app need to talk without knowing anything about each other at all. For that, Vestra uses **Publish/Subscribe** built on the browser's own **custom events**.
+The [Observer store](#/pattern-observer) connects things that hold a reference to the store. But sometimes two parts of the app need to talk without knowing anything about each other at all. For that, Outfit Buddy uses **Publish/Subscribe** built on the browser's own **custom events**.
 
 ## The idea
 
@@ -10,9 +10,9 @@ The [Observer store](#/pattern-observer) connects things that hold a reference t
 When an airport announces *"Flight 402 is now boarding,"* the announcer has no idea who is in the terminal. Passengers for 402 react; everyone else ignores it. New passengers can arrive and start listening; some can leave. The announcer and the passengers are completely **decoupled** — connected only by the words of the announcement. That is Pub/Sub.
 :::
 
-## How Vestra does it
+## How Outfit Buddy does it
 
-The browser already has a message bus: DOM events. Vestra publishes custom events on `document` and lets anyone listen. The two ends are tiny helpers in `js/utils/dom.js`:
+The browser already has a message bus: DOM events. Outfit Buddy publishes custom events on `document` and lets anyone listen. The two ends are tiny helpers in `js/utils/dom.js`:
 
 ```js
 // publish
@@ -27,10 +27,10 @@ Crucially, the **event names are constants**, so publisher and subscriber can ne
 ```js
 // js/config/constants.js
 export const EVENTS = Object.freeze({
-  TOAST: 'vestra:toast',
-  WISHLIST_CHANGED: 'vestra:wishlist-changed',
-  THEME_CHANGED: 'vestra:theme-changed',
-  NAVIGATE: 'vestra:navigate',
+  TOAST: 'outfitbuddy:toast',
+  WISHLIST_CHANGED: 'outfitbuddy:wishlist-changed',
+  THEME_CHANGED: 'outfitbuddy:theme-changed',
+  NAVIGATE: 'outfitbuddy:navigate',
 });
 ```
 
@@ -75,18 +75,18 @@ This one shows Observer and Pub/Sub working as a relay:
    });
    ```
 
-The heart button and the header badge never meet. They are joined only by the string `'vestra:wishlist-changed'`.
+The heart button and the header badge never meet. They are joined only by the string `'outfitbuddy:wishlist-changed'`.
 
 :::why When to use Pub/Sub instead of the store directly?
 Use the **store** when a component genuinely owns or needs the data (the wishlist page renders items, so it subscribes to the store). Use **events** for fire-and-forget cross-cutting messages where coupling the two sides would be silly — a toast, a "count changed" ping, a "theme flipped" nudge. The rule of thumb: if wiring a direct reference between two parts feels like overkill for a one-off signal, shout an event instead.
 :::
 
 :::warning A note for later
-Decoupling is powerful but can make flow harder to trace — you can't "click through" an event the way you can a function call. Vestra keeps this manageable by (a) using very few event types and (b) naming them all in one `EVENTS` constant, so you can grep for every publisher and subscriber of a message in seconds.
+Decoupling is powerful but can make flow harder to trace — you can't "click through" an event the way you can a function call. Outfit Buddy keeps this manageable by (a) using very few event types and (b) naming them all in one `EVENTS` constant, so you can grep for every publisher and subscriber of a message in seconds.
 :::
 
 ## Explaining it out loud
 
-> *"Some things need to talk without knowing each other — like a page raising a toast, or the wishlist telling the header its new count. Vestra uses custom DOM events for that: one side `emit`s a named message, the other listens. The names are constants so they can't drift. It's the announcement-board model — publishers and subscribers share only a message name."*
+> *"Some things need to talk without knowing each other — like a page raising a toast, or the wishlist telling the header its new count. Outfit Buddy uses custom DOM events for that: one side `emit`s a named message, the other listens. The names are constants so they can't drift. It's the announcement-board model — publishers and subscribers share only a message name."*
 
-Next: how Vestra treats five different online stores as one — [Adapters & Registries](#/pattern-adapter).
+Next: how Outfit Buddy treats five different online stores as one — [Adapters & Registries](#/pattern-adapter).

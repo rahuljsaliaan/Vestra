@@ -1,5 +1,5 @@
 /* =========================================================================
-   Vestra Docs — a self-contained VitePress/MkDocs-style documentation theme.
+   Outfit Buddy Docs — a self-contained VitePress/MkDocs-style documentation theme.
    Design tokens first (light default + dark override), then layout, then
    the rendered-markdown ("prose") styles, then components.
    ========================================================================= */
@@ -354,7 +354,7 @@ a:hover { text-decoration: underline; }
 /* Arrow used between diagram parts */
 .d-arrow { text-align: center; color: var(--text-faint); font-size: 1.2rem; line-height: 1; margin: 6px 0; }
 
-/* Aggregator hub: You → Vestra → stores */
+/* Aggregator hub: You → Outfit Buddy → stores */
 .d-hub { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .d-hub__node {
   padding: 10px 20px; border-radius: 12px; font-weight: 700; text-align: center;

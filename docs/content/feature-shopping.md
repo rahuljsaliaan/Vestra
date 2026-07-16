@@ -4,9 +4,9 @@ Now we put the patterns to work in real features. This chapter follows the three
 
 ## Home (`js/pages/home.js`)
 
-The home page is a stack of **rails** (horizontal product carousels): Trending, a couple of featured categories, and — if you've taken the quiz — a personalized "For You" rail.
+The home page is the [outfit recommender](#/feature-recommender) — the stylist controls and results sit at the top. *Below* the recommender is a stack of **rails** (horizontal product carousels) for browsing: Trending and — if you've taken the quiz — a personalized "For You" rail.
 
-The key idea here is **independent loading**. Each rail fetches its own data, shows its own skeleton, and handles its own empty/error state. One slow request can't block the rest of the page.
+The key idea in those rails is **independent loading**. Each rail fetches its own data, shows its own skeleton, and handles its own empty/error state. One slow request can't block the rest of the page.
 
 ```js
 // each rail loads on its own; a failure in one doesn't sink the others
@@ -50,7 +50,7 @@ When you change a filter, the page writes the new query into the hash using `his
 
 ```js
 function syncUrl() {
-  window.__vestraRouter?.replaceQuery(routeTo.shop(toQuery(filters)));
+  window.__outfitBuddyRouter?.replaceQuery(routeTo.shop(toQuery(filters)));
 }
 ```
 
@@ -84,7 +84,7 @@ The product-detail page (PDP) is pure **assembly** — it fetches one product an
 
 ### The cross-store comparison table
 
-This is Vestra's signature feature, and it ties together three patterns:
+This is Outfit Buddy's signature feature, and it ties together three patterns:
 
 1. `offers-service.js` builds one [`Offer`](#/pattern-adapter) per retailer.
 2. Prices are **simulated deterministically** — a hash of `productId:retailerId` seeds a generator, so they look varied but never change between reloads ([deterministic hashing](#/pattern-decorator-cache)).

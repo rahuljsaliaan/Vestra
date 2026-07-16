@@ -1,6 +1,6 @@
 # The Observer store
 
-How does the little wishlist counter in the header update the instant you tap a heart on a product card — even though the heart and the counter are in completely different parts of the app? The answer is the **Observer pattern**, and Vestra's whole state layer is built on one tiny implementation of it: `createStore` in `js/state/store.js`.
+How does the little wishlist counter in the header update the instant you tap a heart on a product card — even though the heart and the counter are in completely different parts of the app? The answer is the **Observer pattern**, and Outfit Buddy's whole state layer is built on one tiny implementation of it: `createStore` in `js/state/store.js`.
 
 ## The idea
 
@@ -76,7 +76,7 @@ userStore.select(
 
 ## The stores built on top
 
-Vestra doesn't expose the raw store. It wraps `createStore` in two purpose-built stores with friendly, domain-specific methods:
+Outfit Buddy doesn't expose the raw store. It wraps `createStore` in two purpose-built stores with friendly, domain-specific methods:
 
 ### `userStore` — theme + quiz profile
 
@@ -105,7 +105,7 @@ store.subscribe(persistAndBroadcast);   // any change → save to localStorage +
 Every change automatically **persists to `localStorage`** and **broadcasts a `WISHLIST_CHANGED` event**. That event is how the header badge updates from anywhere — which is the [Pub/Sub pattern](#/pattern-events), the next chapter.
 
 :::why Why build a store at all, instead of just using variables?
-A plain global variable can be changed, but nothing *notices*. You'd have to manually find and update every part of the UI that cares — and you'd forget one. The store inverts that: parts of the UI declare their interest once (`subscribe`/`select`) and are kept in sync forever, automatically. This is precisely the problem React's `useState` solves; Vestra shows you the ~30 lines of machinery underneath the magic.
+A plain global variable can be changed, but nothing *notices*. You'd have to manually find and update every part of the UI that cares — and you'd forget one. The store inverts that: parts of the UI declare their interest once (`subscribe`/`select`) and are kept in sync forever, automatically. This is precisely the problem React's `useState` solves; Outfit Buddy shows you the ~30 lines of machinery underneath the magic.
 :::
 
 ## Explaining it out loud

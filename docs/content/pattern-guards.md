@@ -1,13 +1,13 @@
 # Guards & Validation
 
-Data from *outside* your program is never trustworthy: an API might change its shape, a network response might be half-broken, `localStorage` might hold corrupt JSON from an old version, a user might type junk into the address bar. Vestra treats every one of these as a **trust boundary** and checks data at the door. The tools live in `js/utils/validate.js` and `js/utils/dom.js`.
+Data from *outside* your program is never trustworthy: an API might change its shape, a network response might be half-broken, `localStorage` might hold corrupt JSON from an old version, a user might type junk into the address bar. Outfit Buddy treats every one of these as a **trust boundary** and checks data at the door. The tools live in `js/utils/validate.js` and `js/utils/dom.js`.
 
 ## The idea: guards and the "anti-corruption layer"
 
 A **guard** is a small function that answers a yes/no question about a value — *"is this really a product?"* — and, in a typed sense, *narrows* the value to a known shape when the answer is yes. Cluster your guards at the edges of the app and you get an **anti-corruption layer**: a wall that stops malformed outside data from leaking into your clean internal code.
 
 :::analogy Airport security
-Every passenger passes through security before entering the secure zone. Inside, staff can trust that everyone was screened — they don't re-check each person at every gate. Guards are Vestra's security checkpoint: validate once at the boundary, and the entire app downstream can trust the data without defensive re-checking everywhere.
+Every passenger passes through security before entering the secure zone. Inside, staff can trust that everyone was screened — they don't re-check each person at every gate. Guards are Outfit Buddy's security checkpoint: validate once at the boundary, and the entire app downstream can trust the data without defensive re-checking everywhere.
 :::
 
 ## Guard functions
@@ -66,7 +66,7 @@ const initial = readJson(STORAGE_KEYS.WISHLIST, isWishlistStateV1, emptyState())
 ```
 
 :::note The version lives in the key
-Notice `STORAGE_KEYS.WISHLIST = 'vestra.wishlist.v1'`. The schema version (`v1`) is baked into the key. If the shape ever changes incompatibly, the app switches to `v2` — a brand-new key — and old data is simply ignored rather than mis-read. Clever and cheap.
+Notice `STORAGE_KEYS.WISHLIST = 'outfitbuddy.wishlist.v1'`. The schema version (`v1`) is baked into the key. If the shape ever changes incompatibly, the app switches to `v2` — a brand-new key — and old data is simply ignored rather than mis-read. Clever and cheap.
 :::
 
 ## Sanitising user input
@@ -88,7 +88,7 @@ export function oneOf(value, allowed, fallback) {
 
 ## The XSS guard: the `html` tagged template
 
-There's one more trust boundary: rendering data *into the page*. If you drop an API string straight into `innerHTML` and it contains `<script>`, you have a cross-site-scripting (XSS) hole. Vestra renders through a **tagged template** that escapes every interpolated value by default:
+There's one more trust boundary: rendering data *into the page*. If you drop an API string straight into `innerHTML` and it contains `<script>`, you have a cross-site-scripting (XSS) hole. Outfit Buddy renders through a **tagged template** that escapes every interpolated value by default:
 
 ```js
 // js/utils/dom.js

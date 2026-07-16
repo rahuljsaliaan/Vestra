@@ -78,8 +78,8 @@ export function mountLayout({ header, footer, toastHost }) {
         <button class="header__menu-btn" type="button" aria-label="Menu" aria-expanded="false">
           ${raw(icon('menu'))}
         </button>
-        <a class="brand" href="${routeTo.home()}" aria-label="Vestra home">
-          <span class="brand__mark">Vestra</span>
+        <a class="brand" href="${routeTo.home()}" aria-label="Outfit Buddy home">
+          <span class="brand__mark">Outfit Buddy</span>
         </a>
         <nav class="header__nav" aria-label="Primary">
           <div class="header__nav-item has-menu">
@@ -108,12 +108,13 @@ export function mountLayout({ header, footer, toastHost }) {
     toElement(html`
       <div class="footer__inner">
         <div class="footer__brand">
-          <p class="footer__word">Vestra</p>
-          <p class="footer__tag">One closet. Every store.</p>
+          <p class="footer__word">Outfit Buddy</p>
+          <p class="footer__tag">Dressed for the occasion.</p>
         </div>
         <p class="footer__fine">
-          Vestra is a discovery layer. Products link out to Amazon, Flipkart, Myntra, Ajio and Tata CLiQ.
-          Prices shown are indicative and converted to INR for display.
+          Outfit Buddy suggests looks for your occasion, weather and style, then links out to Amazon,
+          Flipkart, Myntra, Ajio and Tata CLiQ to shop. Prices shown are indicative and converted to INR
+          for display.
         </p>
       </div>
     `),

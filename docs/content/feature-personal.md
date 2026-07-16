@@ -1,10 +1,10 @@
 # Wishlist, quiz & edits
 
-These three features show how Vestra remembers things about *you* and turns that into a personalized experience — using the [state stores](#/pattern-observer), [validated storage](#/pattern-guards), and a small scoring engine.
+These three features show how Outfit Buddy remembers things about *you* and turns that into a personalized experience — using the [state stores](#/pattern-observer), [validated storage](#/pattern-guards), and a small scoring engine.
 
 ## Wishlist & collections (`js/pages/wishlist.js`)
 
-The wishlist — Vestra calls it your "closet" — lets you save items and organise them into named collections ("Work", "Weekend"). Everything persists across reloads.
+The wishlist — Outfit Buddy calls it your "closet" — lets you save items and organise them into named collections ("Work", "Weekend"). Everything persists across reloads.
 
 ### How saving works, end to end
 

@@ -1,6 +1,6 @@
 /**
  * @file Editorial "Edits" content. Curated fashion stories, authored as data.
- * Each story references Vestra categories (which are guaranteed to exist) rather
+ * Each story references Outfit Buddy categories (which are guaranteed to exist) rather
  * than specific product ids, so the imagery and "shop the look" rails are pulled
  * live and stay valid even as the catalog changes.
  */
@@ -9,7 +9,7 @@
  * @typedef {Object} EditLook
  * @property {string} title
  * @property {string} copy
- * @property {string} category A Vestra category slug — source of imagery + rail.
+ * @property {string} category An Outfit Buddy category slug — source of imagery + rail.
  */
 
 /**

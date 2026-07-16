@@ -1,22 +1,22 @@
 # No framework, no build
 
-One of the most unusual — and educational — decisions in Vestra is that it uses **no framework and no build step**. This chapter explains what that means and why it was chosen, because you will certainly be asked.
+One of the most unusual — and educational — decisions in Outfit Buddy is that it uses **no framework and no build step**. This chapter explains what that means and why it was chosen, because you will certainly be asked.
 
 ## What "no build step" means
 
 Most modern web apps go through a **build**: you write code in React/TypeScript/Sass, then a tool (Webpack, Vite, etc.) *compiles* it into plain files the browser can run. The code you write is not the code that ships.
 
-Vestra skips all of that. The `.js` and `.css` files in the repository are **exactly** what runs in the browser. There is nothing to install (`node_modules` does not exist here) and nothing to compile.
+Outfit Buddy skips all of that. The `.js` and `.css` files in the repository are **exactly** what runs in the browser. There is nothing to install (`node_modules` does not exist here) and nothing to compile.
 
 :::analogy Fresh ingredients vs a ready-meal factory
-A build step is like a food factory: raw ingredients go in, packaged meals come out, and you can't see the original ingredients anymore. Vestra is a home kitchen — what's on the counter is what you eat. For *learning*, the home kitchen is priceless: nothing is hidden.
+A build step is like a food factory: raw ingredients go in, packaged meals come out, and you can't see the original ingredients anymore. Outfit Buddy is a home kitchen — what's on the counter is what you eat. For *learning*, the home kitchen is priceless: nothing is hidden.
 :::
 
 ## The two things that make it possible
 
 ### 1. Native ES modules
 
-Browsers can now load JavaScript modules directly. Vestra uses `import` / `export` exactly as a bundler would, but the browser resolves them itself:
+Browsers can now load JavaScript modules directly. Outfit Buddy uses `import` / `export` exactly as a bundler would, but the browser resolves them itself:
 
 ```js
 // js/pages/home.js
@@ -27,12 +27,12 @@ import { createProductCard } from '../components/product-card.js';
 The `<script type="module">` in `index.html` is what unlocks this. The browser downloads `app.js`, sees its imports, downloads those, and so on — a dependency graph resolved live.
 
 :::note Note the .js extensions
-In module imports Vestra always writes the full `../services/http.js`, extension and all. Bundlers let you drop the extension, but the *browser* needs it. This is a small tax you pay for having no build step.
+In module imports Outfit Buddy always writes the full `../services/http.js`, extension and all. Bundlers let you drop the extension, but the *browser* needs it. This is a small tax you pay for having no build step.
 :::
 
 ### 2. JSDoc instead of TypeScript
 
-TypeScript gives you type-checking, but it needs a compile step. Vestra gets much of the same safety with **JSDoc comments** — structured comments that editors like VS Code understand:
+TypeScript gives you type-checking, but it needs a compile step. Outfit Buddy gets much of the same safety with **JSDoc comments** — structured comments that editors like VS Code understand:
 
 ```js
 /**
@@ -55,11 +55,11 @@ Open the project in an editor with TypeScript support and you get autocomplete, 
 For a small, self-contained storefront, a framework would add megabytes of dependencies, a toolchain to maintain, and a layer of abstraction between you and the browser. Vanilla keeps the app tiny, fast to load, and dependency-free (nothing to get outdated or hacked via a supply-chain attack). The trade-off — you write some plumbing (a router, a store) yourself — is exactly what makes this codebase such a good teacher: **you can see every wire.**
 :::
 
-## What you give up (and how Vestra copes)
+## What you give up (and how Outfit Buddy copes)
 
-A framework hands you things for free. Without one, Vestra rebuilds the essentials by hand — and each becomes a chapter in these docs:
+A framework hands you things for free. Without one, Outfit Buddy rebuilds the essentials by hand — and each becomes a chapter in these docs:
 
-| A framework gives you… | Vestra hand-rolls it in… |
+| A framework gives you… | Outfit Buddy hand-rolls it in… |
 | --- | --- |
 | Routing (URL → screen) | [`router/router.js`](#/lifecycle) |
 | Reactive state | [`state/store.js`](#/pattern-observer) |

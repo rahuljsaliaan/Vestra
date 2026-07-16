@@ -1,6 +1,6 @@
 # Adapters & Registries
 
-Vestra compares prices across five very different stores — Amazon, Flipkart, Myntra, Ajio, Tata CLiQ — and sends you to whichever is cheapest. Those stores build their search URLs in completely different ways. The **Adapter pattern** (kept in a **Registry**) is how Vestra treats them uniformly.
+Outfit Buddy compares prices across five very different stores — Amazon, Flipkart, Myntra, Ajio, Tata CLiQ — and sends you to whichever is cheapest. Those stores build their search URLs in completely different ways. The **Adapter pattern** (kept in a **Registry**) is how Outfit Buddy treats them uniformly.
 
 ## The problem
 
@@ -18,7 +18,7 @@ The rest of the app should not have to know or care about these differences. It 
 An **adapter** wraps something with an awkward or inconsistent interface and presents a **uniform** one instead.
 
 :::analogy A travel power adapter
-Your laptop charger has one plug. Every country has different sockets. A travel adapter lets the *same* charger work in Japan, India, and the UK — it hides the socket differences behind one consistent fitting. Vestra's retailer adapters do the same: five different URL "sockets", one consistent fitting called `buildSearchUrl(product)`.
+Your laptop charger has one plug. Every country has different sockets. A travel adapter lets the *same* charger work in Japan, India, and the UK — it hides the socket differences behind one consistent fitting. Outfit Buddy's retailer adapters do the same: five different URL "sockets", one consistent fitting called `buildSearchUrl(product)`.
 :::
 
 ## The code
@@ -90,6 +90,6 @@ const offers = RETAILERS.map((retailer, index) => {
 
 ## Explaining it out loud
 
-> *"Each store builds its URLs differently, so Vestra wraps every store in an adapter — an object with a common `buildSearchUrl(product)` method that hides the store's quirks. All the adapters live in one frozen registry list. The rest of the app loops over that list without knowing any store's specifics, and adding a store is a one-line change. It's the same idea as a travel plug adapter."*
+> *"Each store builds its URLs differently, so Outfit Buddy wraps every store in an adapter — an object with a common `buildSearchUrl(product)` method that hides the store's quirks. All the adapters live in one frozen registry list. The rest of the app loops over that list without knowing any store's specifics, and adding a store is a one-line change. It's the same idea as a travel plug adapter."*
 
 Next: swapping interchangeable behaviours, like sort orders — [The Strategy pattern](#/pattern-strategy).

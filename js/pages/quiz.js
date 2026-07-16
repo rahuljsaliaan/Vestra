@@ -91,7 +91,7 @@ export function createQuizPage() {
     stage.replaceChildren(
       toElement(html`
         <div class="quiz-results" data-reveal>
-          <p class="eyebrow">Your Vestra profile</p>
+          <p class="eyebrow">Your Outfit Buddy profile</p>
           <h2 class="quiz-results__title">We've tuned the closet to you.</h2>
           <dl class="quiz-results__grid">
             ${summary.map((row) => html`<div class="quiz-results__row"><dt>${row.label}</dt><dd>${row.value}</dd></div>`)}
@@ -116,7 +116,7 @@ export function createQuizPage() {
           <div class="quiz section--narrow section" data-reveal>
             <header class="quiz__head">
               <p class="eyebrow">Style quiz</p>
-              <h1 class="quiz__title">Find your Vestra look.</h1>
+              <h1 class="quiz__title">Find your Outfit Buddy look.</h1>
               <p class="quiz__lede">Four quick taps and your home feed learns what you love.</p>
               <div class="quiz__progress">
                 <div class="quiz__progress-track"><span class="quiz__progress-fill" data-progress-fill></span></div>

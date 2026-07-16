@@ -17,7 +17,7 @@ let storageAvailable = detectStorage();
  */
 function detectStorage() {
   try {
-    const probe = '__vestra_probe__';
+    const probe = '__outfitbuddy_probe__';
     window.localStorage.setItem(probe, probe);
     window.localStorage.removeItem(probe);
     return true;

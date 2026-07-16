@@ -16,7 +16,7 @@ Pure data and settings. No logic that *does* anything; just the values everythin
 | `quiz-content.js` | Every quiz question, option, and its personalization weights — tuning is a data edit, never a logic change. |
 
 :::note The "no magic strings" rule lives here
-Any meaningful number or string in the whole app is defined once in `config/`. That's why you'll see `TIMINGS.SEARCH_DEBOUNCE_MS` instead of `300`, and `EVENTS.TOAST` instead of `'vestra:toast'`. One definition, one place to change.
+Any meaningful number or string in the whole app is defined once in `config/`. That's why you'll see `TIMINGS.SEARCH_DEBOUNCE_MS` instead of `300`, and `EVENTS.TOAST` instead of `'outfitbuddy:toast'`. One definition, one place to change.
 :::
 
 ## `utils/` — the Swiss-army knife

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Vestra.pptx — v2.
+"""Build OutfitBuddy.pptx — v2.
 
 A native, editable PowerPoint deck that mirrors the HTML presentation:
  - radial-gradient dark backgrounds, gradient accent fills, glows, soft shadows
@@ -19,7 +19,7 @@ from pptx.oxml.ns import qn, nsdecls
 from pptx.oxml import parse_xml
 
 import os
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Vestra.pptx")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "OutfitBuddy.pptx")
 
 # ---------------- palette ----------------
 PAPER  = RGBColor(0xF3, 0xEB, 0xDD)
@@ -245,7 +245,7 @@ def eyebrow(slide, s, l=0.92, t=0.6, w=11.5, align=PP_ALIGN.LEFT):
 def chrome(slide, num, total=9):
     """Small brand mark + slide counter, like the HTML deck's fixed chrome."""
     text(slide.shapes, 0.55, 0.22, 2.5, 0.35, [
-        {"t": "Vestra", "size": 15, "color": FAINT, "font": SERIF, "bold": True},
+        {"t": "Outfit Buddy", "size": 15, "color": FAINT, "font": SERIF, "bold": True},
         {"t": ".", "size": 15, "color": ACCENT, "font": SERIF, "bold": True},
     ])
     text(slide.shapes, 11.9, 7.02, 1.1, 0.33,
@@ -425,7 +425,7 @@ r1 = ring(s.shapes, 9.9, -1.6, 4.4)
 r2 = ring(s.shapes, -1.3, 5.7, 3.0, alpha=9000)
 eb = eyebrow(s, "Fashion, aggregated")
 brand = text(s.shapes, 0.9, 1.28, 11.8, 2.15, [
-    {"t": "Vestra", "size": 120, "color": PAPER, "font": SERIF, "bold": True},
+    {"t": "Outfit Buddy", "size": 120, "color": PAPER, "font": SERIF, "bold": True},
     {"t": ".", "size": 120, "color": ACCENT, "font": SERIF, "bold": True},
 ])
 tag = text(s.shapes, 0.92, 3.82, 10, 0.75, [{"t": "One closet. Every store.", "size": 34, "color": PAPER, "bold": True}])
@@ -505,7 +505,7 @@ center = rrect(s.shapes, 4.87, 3.68, 3.6, 1.1, fill=ACCENT, radius=0.18)
 set_gradient(center, ACC_HEX, ACC2_HEX, angle=135)
 add_glow(center, radius_pt=16, alpha=45000)
 set_paras(center.text_frame, [
-    {"runs": [{"t": "Vestra", "size": 30, "color": DARKTX, "font": SERIF, "bold": True}]},
+    {"runs": [{"t": "Outfit Buddy", "size": 30, "color": DARKTX, "font": SERIF, "bold": True}]},
     {"runs": [{"t": "one place to browse", "size": 13, "color": DARKTX, "bold": True}]},
 ])
 lbl = text(s.shapes, 3.5, 4.95, 6.33, 0.45, [{"t": "↓  links you to the cheapest store", "size": 15, "color": FAINT}], align=PP_ALIGN.CENTER)
@@ -616,7 +616,7 @@ core = rrect(s.shapes, 0.92, 2.8, 2.5, 2.15, fill=CARD2, line=LINE, radius=0.1)
 add_shadow(core)
 add_glow(core, radius_pt=10, alpha=22000)
 set_paras(core.text_frame, [
-    {"runs": [{"t": "Vestra", "size": 30, "color": PAPER, "font": SERIF, "bold": True}]},
+    {"runs": [{"t": "Outfit Buddy", "size": 30, "color": PAPER, "font": SERIF, "bold": True}]},
     {"runs": [{"t": "runs in your browser", "size": 13, "color": MUTED}], "space_before": 6},
 ])
 api_prices = ["₹1,540", "₹1,610", "₹1,499", "₹1,560", "₹1,585"]
@@ -637,7 +637,7 @@ for idx, (name, col) in enumerate(STORES):
               anchor=MSO_ANCHOR.MIDDLE)
     pricetxts.append(pt)
 cap = text(s.shapes, 0.92, 5.82, 11.5, 0.55, [
-    {"t": "For every product, Vestra asks ", "size": 19, "color": MUTED},
+    {"t": "For every product, Outfit Buddy asks ", "size": 19, "color": MUTED},
     {"t": "each store", "size": 19, "color": PAPER, "bold": True},
     {"t": ": “what's your price?” — then collects the answers.", "size": 19, "color": MUTED},
 ])
@@ -735,7 +735,7 @@ core8 = rrect(s.shapes, 0.92, 3.3, 2.5, 2.05, fill=ACCENT, radius=0.12)
 set_gradient(core8, ACC_HEX, ACC2_HEX, angle=135)
 add_glow(core8, radius_pt=14, alpha=42000)
 set_paras(core8.text_frame, [
-    {"runs": [{"t": "Vestra", "size": 24, "color": DARKTX, "font": SERIF, "bold": True}]},
+    {"runs": [{"t": "Outfit Buddy", "size": 24, "color": DARKTX, "font": SERIF, "bold": True}]},
     {"runs": [{"t": "core", "size": 24, "color": DARKTX, "font": SERIF, "bold": True}]},
 ])
 plugs = [("Amazon adapter", "?k=linen shirt"), ("Myntra adapter", "/linen-shirt"),
@@ -777,7 +777,7 @@ s = new_slide()
 tl = Timeline()
 r1 = ring(s.shapes, 10.4, -1.4, 3.8)
 r2 = ring(s.shapes, -1.5, 5.4, 3.4, alpha=9000)
-eb = eyebrow(s, "Vestra", align=PP_ALIGN.CENTER)
+eb = eyebrow(s, "Outfit Buddy", align=PP_ALIGN.CENTER)
 big = s.shapes.add_textbox(Inches(0.9), Inches(1.95), Inches(11.53), Inches(2.7))
 set_paras(big.text_frame, [
     {"runs": [{"t": "One closet.", "size": 78, "color": PAPER, "font": SERIF, "bold": True}], "line_spacing": 1.04},

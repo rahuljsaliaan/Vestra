@@ -1,8 +1,9 @@
 /**
  * @file The catalog's category taxonomy — the single source of truth for the
- * DummyJSON fashion category slugs Vestra surfaces. Doubles as: the navigation
- * data, the shop filter facet list, and the whitelist used to strip non-fashion
- * products that leak from DummyJSON's global search endpoint.
+ * DummyJSON fashion category slugs Outfit Buddy surfaces. Doubles as: the
+ * navigation data, the shop filter facet list, the recommender's role pools,
+ * and the whitelist used to strip non-fashion products that leak from
+ * DummyJSON's global search endpoint.
  */
 
 /** Category grouping for navigation. @readonly */
@@ -20,7 +21,7 @@ export const CATEGORY_GROUP_LABEL = Object.freeze({
 });
 
 /**
- * The fashion categories Vestra draws from DummyJSON.
+ * The fashion categories Outfit Buddy draws from DummyJSON.
  * `slug` is the exact DummyJSON category id.
  * @type {ReadonlyArray<{slug:string, label:string, group:string, blurb:string}>}
  */
@@ -62,7 +63,7 @@ export function findCategory(slug) {
 }
 
 /**
- * True when the slug is one of Vestra's fashion categories.
+ * True when the slug is one of Outfit Buddy's fashion categories.
  * @param {unknown} slug
  * @returns {boolean}
  */

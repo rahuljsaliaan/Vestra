@@ -13,7 +13,7 @@ Behind that innocent call sit the network, retries, timeouts, a two-tier cache, 
 A **facade** is a simple front door to a complicated system. It offers a few easy methods and takes care of coordinating all the messy parts behind the scenes, so callers never see the complexity.
 
 :::analogy A hotel concierge
-You ask the concierge, "book me a table at eight." You don't call the restaurant, negotiate the time, arrange the taxi, and confirm the booking yourself — the concierge orchestrates all of that and hands you back a simple "done, 8pm." The concierge is a facade over a dozen services. `product-service.js` is Vestra's concierge for product data.
+You ask the concierge, "book me a table at eight." You don't call the restaurant, negotiate the time, arrange the taxi, and confirm the booking yourself — the concierge orchestrates all of that and hands you back a simple "done, 8pm." The concierge is a facade over a dozen services. `product-service.js` is Outfit Buddy's concierge for product data.
 :::
 
 ## What the facade hides
@@ -85,7 +85,7 @@ Now no component has to write `product.reviews?.length ?? 0` defensively — the
 
 It helps to contrast:
 
-| Pattern | What it does | Vestra example |
+| Pattern | What it does | Outfit Buddy example |
 | --- | --- | --- |
 | **Facade** | Simplifies a *whole subsystem* behind a few methods. | `product-service.js` |
 | **Adapter** | Makes *one* awkward interface match a desired one. | retailer `buildSearchUrl` |

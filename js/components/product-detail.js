@@ -109,7 +109,7 @@ export function createPriceTable(offers) {
     <section class="pricetable" aria-label="Price comparison across stores">
       <header class="pricetable__head">
         <h2 class="pricetable__title">Compare across stores</h2>
-        <p class="pricetable__sub">Live-style pricing across India's top fashion stores. Vestra sends you to the best deal.</p>
+        <p class="pricetable__sub">Live-style pricing across India's top fashion stores. Outfit Buddy sends you to the best deal.</p>
       </header>
       <ul class="pricetable__list">
         ${offers.map(

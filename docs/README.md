@@ -1,6 +1,6 @@
-# Vestra Docs
+# Outfit Buddy Docs
 
-A self-contained, beginner-friendly documentation site for the Vestra codebase —
+A self-contained, beginner-friendly documentation site for the Outfit Buddy codebase —
 built in the same spirit as the project itself: **vanilla HTML/CSS/JS, no build
 step, no dependencies.** It looks and behaves like MkDocs / VitePress (sidebar
 index, on-page table of contents, search, light/dark themes, syntax

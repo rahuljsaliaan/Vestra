@@ -142,7 +142,7 @@ export function createEditStoryPage() {
         root.append(renderMissing());
         return;
       }
-      document.title = `${story.title} — The Edits — Vestra`;
+      document.title = `${story.title} — The Edits — Outfit Buddy`;
 
       root.append(
         toElement(html`

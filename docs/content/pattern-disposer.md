@@ -1,6 +1,6 @@
 # The Disposer (cleanup)
 
-In a Single-Page App the page never truly reloads, so the browser never automatically clears away old event listeners, subscriptions, and timers. If you don't clean them up yourself, they pile up — a **memory leak** and a source of weird bugs. Vestra solves this with one small, reusable class: the **`Disposer`** in `js/utils/dom.js`.
+In a Single-Page App the page never truly reloads, so the browser never automatically clears away old event listeners, subscriptions, and timers. If you don't clean them up yourself, they pile up — a **memory leak** and a source of weird bugs. Outfit Buddy solves this with one small, reusable class: the **`Disposer`** in `js/utils/dom.js`.
 
 ## The problem, concretely
 
@@ -78,11 +78,11 @@ Because `select` returns "the function that unsubscribes," and `disposer.add` re
 Recall the [page lifecycle](#/lifecycle): on navigation the router does two things — it `abort()`s the navigation's `AbortController` (killing in-flight fetches) and calls the page's `unmount()` (which calls `disposer.dispose()`). Together they guarantee that when a page leaves, **nothing it started outlives it**: no pending request, no listener, no timer, no subscription.
 
 :::why Why not just rely on the browser or a framework?
-Frameworks like React hide this behind `useEffect` cleanup returns — but they're doing the exact same bookkeeping under the hood. Vanilla JS gives you nothing for free, so Vestra builds the minimum: a list of undo-functions and a method to run them. It's ~30 lines, it's easy to reason about, and it makes "clean teardown" a habit the code physically enforces (you tend to reach for `disposer.listen` instead of raw `addEventListener`).
+Frameworks like React hide this behind `useEffect` cleanup returns — but they're doing the exact same bookkeeping under the hood. Vanilla JS gives you nothing for free, so Outfit Buddy builds the minimum: a list of undo-functions and a method to run them. It's ~30 lines, it's easy to reason about, and it makes "clean teardown" a habit the code physically enforces (you tend to reach for `disposer.listen` instead of raw `addEventListener`).
 :::
 
 ## Explaining it out loud
 
 > *"Because a SPA never reloads, old listeners and timers would leak. Every page keeps a `Disposer` — think of it as a bin bag. Whenever the page adds a listener, subscription, or timer, it drops the matching cleanup into the bag, usually via `disposer.listen(...)` which pairs add-and-remove automatically. On unmount, `disposer.dispose()` empties the bag in reverse order. Combined with the router aborting in-flight fetches, nothing a page starts ever outlives it."*
 
-Next: how Vestra refuses to trust data from the outside world — [Guards & Validation](#/pattern-guards).
+Next: how Outfit Buddy refuses to trust data from the outside world — [Guards & Validation](#/pattern-guards).

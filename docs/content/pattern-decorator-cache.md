@@ -1,6 +1,6 @@
 # Decorators & Caching
 
-This chapter covers a family of closely related ideas that make Vestra fast and resilient: **wrapping** a function to add behaviour (the Decorator idea), and using it to build a **two-tier cache** with **request de-duplication**. We'll finish with the neat **deterministic hashing** trick that keeps simulated prices stable.
+This chapter covers a family of closely related ideas that make Outfit Buddy fast and resilient: **wrapping** a function to add behaviour (the Decorator idea), and using it to build a **two-tier cache** with **request de-duplication**. We'll finish with the neat **deterministic hashing** trick that keeps simulated prices stable.
 
 ## Wrappers (the Decorator idea)
 
@@ -10,7 +10,7 @@ A **wrapper** (or decorator) takes an existing function and returns a new one wi
 Wrapping a present doesn't change the present — it adds a layer around it. You still hand over "a gift"; it just now also looks nice and hides what's inside. A function wrapper adds a layer (a timeout, a cache check, a delay) around the original, without changing how you call it.
 :::
 
-Vestra has several. Each keeps the wrapped function's signature but adds one concern:
+Outfit Buddy has several. Each keeps the wrapped function's signature but adds one concern:
 
 ```js
 // utils/async.js — guarantee a promise takes at least minMs (so loading skeletons
@@ -79,7 +79,7 @@ On the home page alone, several independent rails need overlapping data. Naïvel
 
 ## Bonus: deterministic "randomness" for stable prices
 
-The per-store prices are simulated — but if they were truly random, they'd change on every reload, which would feel broken ("wasn't this ₹1,499 a second ago?"). Vestra makes them *look* random but stay *stable* using **deterministic hashing** (`utils/hash.js`).
+The per-store prices are simulated — but if they were truly random, they'd change on every reload, which would feel broken ("wasn't this ₹1,499 a second ago?"). Outfit Buddy makes them *look* random but stay *stable* using **deterministic hashing** (`utils/hash.js`).
 
 ```js
 // A hash of (productId + retailerId) seeds a tiny pseudo-random generator.
@@ -90,13 +90,13 @@ const variation = lerp(rng(), OFFERS.VARIATION_MIN, OFFERS.VARIATION_MAX);
 Same product + same store → same hash → same seed → same "random" numbers, forever. No `Math.random()` anywhere.
 
 :::analogy A dealt-once card shuffle
-Imagine a deck shuffled by a rule based on today's date rather than by hand. Everyone who shuffles "for July 12" gets the identical order. It *looks* shuffled, but it's reproducible. Vestra's prices are shuffled by the product-and-store id, so they look varied but never move.
+Imagine a deck shuffled by a rule based on today's date rather than by hand. Everyone who shuffles "for July 12" gets the identical order. It *looks* shuffled, but it's reproducible. Outfit Buddy's prices are shuffled by the product-and-store id, so they look varied but never move.
 :::
 
 This is also why one retailer is always the guaranteed cheapest and in stock — the simulation is engineered so the "best price" badge is always truthful. Details in the [shopping walkthrough](#/feature-shopping).
 
 ## Explaining it out loud
 
-> *"Vestra wraps functions to add behaviour without changing how they're called — a minimum-duration wrapper so skeletons don't flash, a timeout wrapper around fetch. The cache is two-tier: instant memory plus a sessionStorage mirror that survives reloads, and it de-duplicates concurrent requests for the same URL by sharing one in-flight promise. And simulated prices use deterministic hashing so they look random but never change between reloads."*
+> *"Outfit Buddy wraps functions to add behaviour without changing how they're called — a minimum-duration wrapper so skeletons don't flash, a timeout wrapper around fetch. The cache is two-tier: instant memory plus a sessionStorage mirror that survives reloads, and it de-duplicates concurrent requests for the same URL by sharing one in-flight promise. And simulated prices use deterministic hashing so they look random but never change between reloads."*
 
 Next: the small class that guarantees nothing leaks when a page closes — [The Disposer](#/pattern-disposer).

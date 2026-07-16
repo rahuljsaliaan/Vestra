@@ -26,7 +26,7 @@ import { initWishlistInteractions } from './components/wishlist-interactions.js'
 function requireEl(selector) {
   const node = document.querySelector(selector);
   if (!(node instanceof HTMLElement)) {
-    throw new Error(`Vestra bootstrap: missing required element "${selector}".`);
+    throw new Error(`Outfit Buddy bootstrap: missing required element "${selector}".`);
   }
   return node;
 }
@@ -63,7 +63,7 @@ function bootstrap() {
   });
 
   // Expose for pages that need to reflect filter state into the hash.
-  window.__vestraRouter = router;
+  window.__outfitBuddyRouter = router;
 
   router.start();
 }

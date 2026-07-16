@@ -8,14 +8,37 @@
 import { STORAGE_KEYS, THEME, EVENTS } from '../config/constants.js';
 import { createStore } from './store.js';
 import { readString, writeString, readJson, writeJson, remove } from '../services/storage.js';
-import { isQuizProfileV1 } from '../utils/validate.js';
+import { isQuizProfileV1, isObject } from '../utils/validate.js';
 import { emit } from '../utils/dom.js';
+
+/**
+ * @typedef {Object} StylistPrefs
+ * @property {string} occasion
+ * @property {string} gender
+ * @property {string} vibe
+ * @property {string} weather
+ */
 
 /**
  * @typedef {Object} UserState
  * @property {string} theme One of THEME.LIGHT | THEME.DARK.
  * @property {import('../types.js').QuizProfileV1|null} quizProfile
+ * @property {StylistPrefs|null} stylistPrefs
  */
+
+/**
+ * @param {unknown} value
+ * @returns {value is StylistPrefs}
+ */
+function isStylistPrefs(value) {
+  return (
+    isObject(value) &&
+    typeof value.occasion === 'string' &&
+    typeof value.gender === 'string' &&
+    typeof value.vibe === 'string' &&
+    typeof value.weather === 'string'
+  );
+}
 
 /**
  * Resolve the initial theme: stored preference wins, else OS preference.
@@ -32,6 +55,7 @@ const store = createStore(
   /** @type {UserState} */ ({
     theme: resolveInitialTheme(),
     quizProfile: readJson(STORAGE_KEYS.QUIZ, isQuizProfileV1, null),
+    stylistPrefs: readJson(STORAGE_KEYS.STYLIST_PREFS, isStylistPrefs, null),
   }),
 );
 
@@ -87,6 +111,20 @@ export const userStore = {
   clearQuizProfile() {
     store.setState({ quizProfile: null });
     remove(STORAGE_KEYS.QUIZ);
+  },
+
+  /** @returns {StylistPrefs|null} */
+  getStylistPrefs() {
+    return store.getState().stylistPrefs;
+  },
+
+  /**
+   * Persist the last recommender brief so returning users get one-tap results.
+   * @param {StylistPrefs} prefs
+   */
+  setStylistPrefs(prefs) {
+    store.setState({ stylistPrefs: prefs });
+    writeJson(STORAGE_KEYS.STYLIST_PREFS, prefs);
   },
 };
 

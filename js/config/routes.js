@@ -4,7 +4,7 @@
  * should ever hand-write a `#/...` string.
  */
 
-const APP_NAME = 'Vestra';
+const APP_NAME = 'Outfit Buddy';
 
 /**
  * Route ids. Used as stable keys by the router and navigation.
@@ -27,7 +27,7 @@ export const ROUTE_ID = Object.freeze({
  * @type {ReadonlyArray<{id:string, pattern:string, title:string}>}
  */
 export const ROUTES = Object.freeze([
-  { id: ROUTE_ID.HOME, pattern: '/', title: `${APP_NAME} — One closet. Every store.` },
+  { id: ROUTE_ID.HOME, pattern: '/', title: `${APP_NAME} — Dressed for the occasion.` },
   { id: ROUTE_ID.SHOP, pattern: '/shop', title: `Shop — ${APP_NAME}` },
   { id: ROUTE_ID.PRODUCT, pattern: '/product/:id', title: `${APP_NAME}` },
   { id: ROUTE_ID.WISHLIST, pattern: '/wishlist', title: `Wishlist — ${APP_NAME}` },

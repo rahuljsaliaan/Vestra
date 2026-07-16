@@ -7,7 +7,7 @@ When you change the "Sort by" dropdown on the shop page — Relevance, Price low
 The Strategy pattern says: when you have several **interchangeable ways of doing one thing**, don't write a big `if/else` that hard-codes them. Instead, put each way in its own little function ("a strategy"), keep them in a lookup, and pick one at runtime.
 
 :::analogy Choosing a route in a maps app
-A navigation app can route you by *fastest*, *shortest*, or *avoid tolls*. Each is a different **strategy** for the same task ("get me there"). You pick one from a menu and the app plugs it in. It doesn't have one tangled function full of `if fastest … else if shortest …`; it has separate, swappable route-planners. Vestra's sort orders are exactly this menu of strategies.
+A navigation app can route you by *fastest*, *shortest*, or *avoid tolls*. Each is a different **strategy** for the same task ("get me there"). You pick one from a menu and the app plugs it in. It doesn't have one tangled function full of `if fastest … else if shortest …`; it has separate, swappable route-planners. Outfit Buddy's sort orders are exactly this menu of strategies.
 :::
 
 ## The code

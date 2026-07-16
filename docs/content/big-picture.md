@@ -11,9 +11,25 @@ We'll cover:
 
 No code on this page — just pictures and plain words.
 
+## What it does, in one picture
+
+Before the shape of the code, the shape of the *idea*. The home screen is a **stylist**: you make four quick choices and it builds looks.
+
+<figure class="diagram">
+  <ol class="d-flow">
+    <li><b>1</b> Pick an <strong>occasion</strong> (work, date, party…).</li>
+    <li><b>2</b> Confirm the <strong>weather</strong> — auto-detected, or tap to set it.</li>
+    <li><b>3</b> Choose <strong>who for</strong> and your <strong>vibe</strong>.</li>
+    <li><b>4</b> Hit <strong>Style me</strong> → coordinated looks, each with links to <em>shop</em> or <em>get inspired</em>.</li>
+  </ol>
+  <figcaption>The recommender is the front door. Everything else — browsing, price comparison, wishlist — supports it.</figcaption>
+</figure>
+
+Keep that flow in mind; the [recommender walkthrough](#/feature-recommender) shows exactly how the code assembles a look. Now, the technical shape:
+
 ## 1. It's one page that swaps its middle
 
-Vestra is a **Single-Page Application** (SPA). That sounds technical, but it means something simple: there is only **one** web page. As you click around, the app doesn't load new pages from a server — it just **replaces the middle section** of the page you're already on. The top (header) and bottom (footer) stay put.
+Outfit Buddy is a **Single-Page Application** (SPA). That sounds technical, but it means something simple: there is only **one** web page. As you click around, the app doesn't load new pages from a server — it just **replaces the middle section** of the page you're already on. The top (header) and bottom (footer) stay put.
 
 <figure class="diagram">
   <div class="d-window">
@@ -26,7 +42,7 @@ Vestra is a **Single-Page Application** (SPA). That sounds technical, but it mea
 </figure>
 
 :::analogy A theatre stage
-The theatre (header + footer) stays the same all night. When the scene changes, stagehands don't rebuild the theatre — they just swap the **set** on the stage. In Vestra, the "stage" is the middle section, and swapping the set is what "changing page" means. That's why moving around feels instant: nothing is rebuilt from scratch.
+The theatre (header + footer) stays the same all night. When the scene changes, stagehands don't rebuild the theatre — they just swap the **set** on the stage. In Outfit Buddy, the "stage" is the middle section, and swapping the set is what "changing page" means. That's why moving around feels instant: nothing is rebuilt from scratch.
 :::
 
 ## 2. The code is organised in layers
@@ -49,7 +65,7 @@ Now, *inside* the code, how are the files arranged? In **layers** — like the f
 The golden rule: **things only depend downward.** A page (near the top) can use everything below it. But `config` (the foundation) knows nothing about the floors above. This one rule is what keeps the project tidy as it grows — we'll see exactly why on the next page.
 
 :::analogy Floors of a building
-You pour the foundation first, then frame the lower floors, then the upper ones. The penthouse relies on the foundation; the foundation doesn't rely on the penthouse. You can redecorate the top floor without touching the concrete below. Vestra's layers work the same way — change a page without any risk to the foundation.
+You pour the foundation first, then frame the lower floors, then the upper ones. The penthouse relies on the foundation; the foundation doesn't rely on the penthouse. You can redecorate the top floor without touching the concrete below. Outfit Buddy's layers work the same way — change a page without any risk to the foundation.
 :::
 
 ## 3. What happens when you use it
@@ -89,7 +105,7 @@ When you open the project, you'll see these folders. Here is the one-line job of
 | `app.js` | Turn everything on. | The light switch |
 
 :::tip You can now guess where anything lives
-Need a helper to format a date? It's in `utils/`. A new screen? `pages/`. Something about the wishlist being remembered? `state/`. Trusting the folders is half of understanding a codebase — and Vestra's folders are honest.
+Need a helper to format a date? It's in `utils/`. A new screen? `pages/`. Something about the wishlist being remembered? `state/`. Trusting the folders is half of understanding a codebase — and Outfit Buddy's folders are honest.
 :::
 
 ## You now have the map

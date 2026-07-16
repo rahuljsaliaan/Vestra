@@ -70,7 +70,7 @@ export function getById(id, opts = {}) {
 }
 
 /**
- * Full-text search, filtered to Vestra's fashion categories (DummyJSON's search
+ * Full-text search, filtered to Outfit Buddy's fashion categories (DummyJSON's search
  * leaks phones, groceries, etc.).
  * @param {string} query
  * @param {{signal?: AbortSignal, limit?: number}} [opts]
@@ -92,7 +92,7 @@ export function search(query, opts = {}) {
  * @returns {Promise<import('../types.js').Product[]>}
  */
 export function getAllFashion(opts = {}) {
-  return cached('vestra:all-fashion', async () => {
+  return cached('outfitbuddy:all-fashion', async () => {
     const lists = await Promise.all(
       CATEGORIES.map((c) => getByCategory(c.slug, { signal: opts.signal })),
     );

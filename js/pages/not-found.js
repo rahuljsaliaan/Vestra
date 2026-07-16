@@ -18,7 +18,7 @@ export function createNotFoundPage() {
             <p class="notfound__code">404</p>
             <h1 class="notfound__title">This look is off the rack.</h1>
             <p class="notfound__body">The page you were after doesn't exist — but the closet is still open.</p>
-            <a class="btn btn--primary" href="${routeTo.home()}">Back to Vestra</a>
+            <a class="btn btn--primary" href="${routeTo.home()}">Back to Outfit Buddy</a>
           </section>
         `),
       );

@@ -73,7 +73,7 @@ export function createProductPage() {
       }
       if (ctx.signal.aborted) return;
 
-      document.title = `${product.title} — Vestra`;
+      document.title = `${product.title} — Outfit Buddy`;
 
       const priceInr = usdToInr(product.price);
       const discount = roundPercent(product.discountPercentage);
